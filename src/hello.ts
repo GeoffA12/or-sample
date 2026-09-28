@@ -1,11 +1,7 @@
 import { OpenRouter } from "@openrouter/sdk";
+import { readConfig } from "./config.ts";
 
-const apiKey = process.env["OPENROUTER_API_KEY"];
-if (!apiKey) {
-  throw new Error("OPENROUTER_API_KEY is not set (export it or add it to .env)");
-}
-
-const model = process.env["OPENROUTER_MODEL"] ?? "anthropic/claude-sonnet-5";
+const { apiKey, model } = readConfig(process.env);
 const openRouter = new OpenRouter({ apiKey });
 
 const stream = await openRouter.chat.send({

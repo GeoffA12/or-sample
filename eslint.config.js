@@ -12,6 +12,17 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      // node:test's test()/describe() return promises the runner awaits itself.
+      "@typescript-eslint/no-floating-promises": [
+        "error",
+        {
+          allowForKnownSafeCalls: [
+            { from: "package", package: "node:test", name: ["test", "it", "describe", "suite"] },
+          ],
+        },
+      ],
+    },
   },
   {
     files: ["eslint.config.js"],

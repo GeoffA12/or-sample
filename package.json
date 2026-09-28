@@ -9,18 +9,19 @@
   },
   "scripts": {
     "hello": "node --env-file-if-exists=.env src/hello.ts",
+    "test": "node --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "check": "bun run typecheck && bun run lint"
+    "check": "bun run typecheck && bun run lint && bun run test"
   },
   "dependencies": {
-    "@openrouter/sdk": "^1.3.33"
+    "@openrouter/sdk": "1.3.33"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^26.6.3",
-    "eslint": "^10.11.0",
-    "typescript": "^6",
-    "typescript-eslint": "^8.70.1"
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.6.3",
+    "eslint": "10.11.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.1"
   }
 }
